@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en-UK">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport"/>
+    <meta content="Session 2: Protein Simulations" name="description"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap"
+          rel="stylesheet">
+    <link href="scripts/style.css" rel="stylesheet"/>
+    <title>ClayCode workshop</title>
+</head>
+
+<body>
+
+<div class="box">
+    <h1 id="title">ClayCode Workshop</h1>
+</div>
+
+<div class="box">
+    <h2 id="overview">Contents</h2>
+</div>
+
+<div class="box">
+    <h2 class="enum" id="toc_1">Introduction</h2>
+    <p>
+        Creating accurate clay models for classical molecular dynamics (MD) simulations can be a time-consuming and
+        error-prone process.
+        ClayCode is a Python package that can be used to automate this process.
+    </p>
+    <p>
+        The package is designed with default options to require only minimal user input. At the same time, it is
+        flexible for users to specify their own build directives if they wish to do so.
+    </p>
+    <p>A summary of all currently available and future unit cell (UC) types in the ClayCode UC database can be found in
+        <a href="#tab:ucs">table 1</a>.
+    </p>
+    <table id="tab:ucs" style="width:100%">
+        <caption>Summary of available and future clay and layered double hydroxide (LDH) UC types in the ClayCode UC
+            database with respective with American Mineralogist Crystal Structure Database (AMCSD) IDs.
+        </caption>
+        <thead>
+        <tr>
+            <th>UC type</th>
+            <th>Description</th>
+            <th>AMCSD code</th>
+            <!--    <th>Reference</th>-->
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>TD21</td>
+            <td><span style="font-style: italic">trans</span>-dioctahedral 2:1 UC</td>
+            <td>0007180</td>
+            <!--    <td>\citeDainyak2006</td>-->
+        </tr>
+        <tr>
+            <td>CD21</td>
+            <td><span style="font-style: italic">cis</span>-dioctahedral 2:1 UC</td>
+            <td>0002868</td>
+            <!--    <td>\citeViani2002</td>-->
+        </tr>
+        <tr>
+            <td>TD11</td>
+            <td><span style="font-style: italic">trans</span>-dioctahedral 1:1 UC</td>
+            <td></td>
+            <!--    <td>\citetd11</td>-->
+        </tr>
+        <tr>
+            <td>CD11</td>
+            <td><span style="font-style: italic">cis</span>-dioctahedral 1:1 UC</td>
+            <td></td>
+            <!--    <td>\citecd11</td>-->
+        </tr>
+        <tr>
+            <td>T21</td>
+            <td>trioctahedral 2:1 UC</td>
+            <td>0015819</td>
+            <!--    <td>\citeBreu2003</td>-->
+        </tr>
+        <tr>
+            <td>T11</td>
+            <td>trioctahedral 2:1 UC</td>
+            <td></td>
+            <!--    <td>\citet21</td>-->
+        </tr>
+        <tr>
+            <td>LDH21</td>
+            <td>2:1 LDH UC</td>
+            <td></td>
+            <!--    <td>\citeld21</td>-->
+        </tr>
+        <tr>
+            <td>LDH31</td>
+            <td>3:1 LDH UC</td>
+            <td>0007912</td>
+            <!--    <td>\citeCatti1995</td>-->
+        </tr>
+        </tbody>
+    </table>
+    <p>A list of all substitutions in the database UCs are given in <a href="#tab:subs">table 2</a>.</p>
+    <table id="tab:subs" style="width:100%">
+        <caption>Table 2: Summary of tetrahedral (T) and octahedral (O) substitutions in database dioctahedral (dio) and
+            trioctahedral (trio) UCs.
+        </caption>
+        <thead>
+        <tr>
+            <th>sheet</th>
+            <th>UC type</th>
+            <th colspan="2">substituted atom</th>
+            <th></th>
+            <th colspan="2">substituting atom</th>
+            <th>charge (<span style="font-style: italic">e</span> UC<sup>-1</sup>)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>T</td>
+            <td>dio, trio</td>
+            <td>Si<sup>4+</sup></td>
+            <td>(st)</td>
+            <td>&rarr;</td>
+            <td>Al<sup>3+</sup></td>
+            <td>(at)</td>
+            <td>-1.0</td>
+        </tr>
+        <tr>
+            <td>T</td>
+            <td>dio, trio</td>
+            <td>Si<sup>4+</sup></td>
+            <td>(st)</td>
+            <td>&rarr;</td>
+            <td>Fe<sup>3+</sup></td>
+            <td>(fet)</td>
+            <td>-1.0</td>
+        </tr>
+        <tr>
+            <td>O</td>
+            <td>dio</td>
+            <td>Al<sup>3+</sup></td>
+            <td>(ao)</td>
+            <td>&rarr;</td>
+            <td>Fe<sup>2+</sup></td>
+            <td>(fe2)</td>
+            <td>-1.0</td>
+        </tr>
+        <tr>
+            <td>O</td>
+            <td>dio</td>
+            <td>Al<sup>3+</sup></td>
+            <td>(ao)</td>
+            <td>&rarr;</td>
+            <td>Fe<sup>3+</sup></td>
+            <td>(feo)</td>
+            <td>0.0</td>
+        </tr>
+        <tr>
+            <td>O</td>
+            <td>dio</td>
+            <td>Al<sup>3+</sup></td>
+            <td>(ao)</td>
+            <td>&rarr;</td>
+            <td>Mg<sup>2+</sup></td>
+            <td>(mgo)</td>
+            <td>-1.0</td>
+        </tr>
+        <tr>
+            <td>O</td>
+            <td>dio</td>
+            <td>Fe<sup>3+</sup></td>
+            <td>(feo)</td>
+            <td>&rarr;</td>
+            <td>Al<sup>2+</sup></td>
+            <td>(ao)</td>
+            <td>0.0</td>
+        </tr>
+        <tr>
+            <td>O</td>
+            <td>dio</td>
+            <td>Fe<sup>3+</sup></td>
+            <td>(feo)</td>
+            <td>&rarr;</td>
+            <td>Fe<sup>2+</sup></td>
+            <td>(fe2)</td>
+            <td>-1.0</td>
+        </tr>
+        <tr>
+            <td>O</td>
+            <td>dio</td>
+            <td>Fe<sup>3+</sup></td>
+            <td>(feo)</td>
+            <td>&rarr;</td>
+            <td>Mg<sup>2+</sup></td>
+            <td>(mgo)</td>
+            <td>-1.0</td>
+        </tr>
+        <tr>
+            <td>O</td>
+            <td>trio</td>
+            <td>Mg<sup>2+</sup></td>
+            <td>(mgo)</td>
+            <td>&rarr;</td>
+            <td>Li<sup>1+</sup></td>
+            <td>(lio)</td>
+            <td>-1.0</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="box">
+    <h2 class="enum" id="toc_2">Getting Started</h2>
+    <p>
+
+    </p>
+    <h3 class="enum" id="toc_2_1">Requirements</h3>
+    <p>
+
+    </p>
+    <h3 class="enum" id="toc_2_2">Installation</h3>
+    <p>
+
+    </p>
+    <div class="bbox">
+        <h4 id="Installing_ClayCode">Installing ClayCode</h4>
+        <ul>
+            <li>Download ClayCode from the GitHub repository</li>
+            <li>Either clone the entire repository by opening a
+                terminal and run the following command:
+                <pre>git clone https://github.com/Erastova-group/ClayCode.git</pre>
+                Alternatively, you can download ClayCode as a zip file. To do this, click on
+                the &quot;&lt;&gt; Code&quot; button and select &quot;Download ZIP&quot;. Once downloaded, extract
+                the
+                contents of the zip file to a location of your choice.
+                <blockquote>
+                    Use <code>Ctrl + Alt + T</code> to open a terminal window.
+                </blockquote>
+            </li>
+            <!--            <li>-->
+            <!--                Once you have downloaded the repository, open a terminal and use <code>cd</code>to navigate to the-->
+            <!--                &quot;ClayCode&quot; directory in your terminal.-->
+            <!--                <pre>cd ClayCode</pre>-->
+            <!--            </li>-->
+            <li>Inside the ClayCode folder, there is the <code>install.sh</code> installation file. Use it to install
+                the <code>ClayCode</code> package:
+                <pre>bash install.sh</pre>
+
+                <blockquote>
+                    Use <code>cd ...</code> to navigate directories in the terminal.
+                </blockquote>
+                <blockquote class="info">When doing this on your own computer, you might need to first install the right
+                    version of Python (3.9).
+                </blockquote>
+            </li>
+            <li><p>Once the installation was successful, you can use the package with the command <code>ClayCode</code>
+                <blockquote>
+                    For example, to build a model, the command would be:
+                    <pre>ClayCode builder &lt;options&gt;</pre>
+                </blockquote>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="box">
+    <h2 class="enum" id="toc_3">Building accurate clay models</h2>
+    <p>
+        To build a clay model, the following build instructions need to be provided as files:
+    </p>
+    <ol>
+        <li>Specifications on system size, solvation, number of stacked clay sheets, etc. (in YAML format).</li>
+        <li>Information about the model chemical composition (either as target stoichiometry (in CSV (comma-separated
+            values) format or as individual UC indices and their ratios in the specifications YAML file)
+        </li>
+    </ol>
+
+    <div class="bbox">
+        <h3 id="Download_the_workshop_repository">Download the workshop repository</h3>
+        <ul>
+            <li>Download the workshop repository from the GitHub repository:
+                <a href="https://github.com/hp115/Rip-WS">github.com/hp115/Rip-WS</a>
+            </li>
+        </ul>
+    </div>
+    The following sections contain instructions for using ClayCode to build a clay model by specifying a target
+    stoichiometry and by giving UC indices and their ratios.
+    <h3 class="enum" id="toc_3_1">Preparing a clay model with a target composition</h3>
+    The first option is to provide a target composition file in CSV format. This file should contain the target
+    composition of the clay model.
+    For this workshop we suggest setting one of the following Clay Minerals Society source clay compositions (<a
+        href="https://www.clays.org/sourceclays_data/">clays.org/sourceclays_data/</a>) as the target:
+    <ul>
+        <li>SWy-1/SWy-2/SWy-3</li>
+        <!--        <li>KGa-1</li>-->
+        <!--        <li></li>KGa-2</li>-->
+        <li>SAz1/SAz-2</li>
+        <li>STx-1</li>
+        <li>NG-1</li>
+        <li>NAu-1</li>
+        <li>NAu-2</li>
+    </ul>
+    <div class="bbox">
+        <h3 id="Prepare_the_target_composition_file">Prepare the target composition file</h3>
+        <p>Inside the <code>builder</code> folder, you can find a template for the target composition file
+            <code>target_composition.csv</code>.</p>
+        <ul>
+            <li>Add a new entry for your selected clay.</li>
+            <li>
+                <figure>
+                    <img alt="target_composition.png" src="images/target_composition.png"/>
+                    <figcaption>
+                        The column header identifies the clay type, the entries below describe the average tetrahedral
+                        and
+                        octahedral UC occupancies, charges and interlayer ion types and ratios.
+                    </figcaption>
+                </figure>
+            </li>
+        </ul>
+    </div>
+    <h3>Requirements</h3>
+    <ul>
+        <li>Python3.9</li>
+    <li>Pipx</li>
+    </ul>
+</div>
+
+
+
+<!--<script src="scripts/generate_header.js"></script>-->
+<script src="scripts/generate_overview.js"></script>
+<script src="scripts/scroll_up.js"></script>
+<script src="scripts/adjust_for_dyslexia.js"></script>
+<script>window.onload = function () {
+    generateOverview();
+    generateHeader();
+    scrollUp();
+    adjustForDyslexia()
+}</script>
+</body>
+</html>
