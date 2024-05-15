@@ -1,2 +1,5 @@
 # Rip-WS
-RiP workshop files
+
+We need:
+- builder/target_composition.csv
+- builder/specifications.yaml
