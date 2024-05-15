@@ -20,8 +20,8 @@
 
 <div class="box">
     <h2 id="overview">Contents</h2>
-</div>
 
+</div>
 <div class="box">
     <h2 class="enum" id="toc_1">Introduction</h2>
     <p>
@@ -33,7 +33,10 @@
         The package is designed with default options to require only minimal user input. At the same time, it is
         flexible for users to specify their own build directives if they wish to do so.
     </p>
-    <p>A summary of all currently available and future unit cell (UC) types in the ClayCode UC database can be found in
+    <p>ClayCode assembles clay sheets from an internal unit cell (UC) database containing a selection of different
+        UC types that have been constructed from crystallographic data from the American Mineralogist Crystal Structure
+        Database (AMCSD). A summary of all currently available and future UC types in the ClayCode UC database can be
+        found in
         <a href="#tab:ucs">table 1</a>.
     </p>
     <table id="tab:ucs" style="width:100%">
@@ -64,7 +67,7 @@
         <tr>
             <td>TD11</td>
             <td><span style="font-style: italic">trans</span>-dioctahedral 1:1 UC</td>
-            <td></td>
+            <td>will be added</td>
             <!--    <td>\citetd11</td>-->
         </tr>
         <tr>
@@ -82,13 +85,13 @@
         <tr>
             <td>T11</td>
             <td>trioctahedral 2:1 UC</td>
-            <td></td>
+            <td>will be added</td>
             <!--    <td>\citet21</td>-->
         </tr>
         <tr>
             <td>LDH21</td>
             <td>2:1 LDH UC</td>
-            <td></td>
+            <td>will be added</td>
             <!--    <td>\citeld21</td>-->
         </tr>
         <tr>
@@ -207,16 +210,75 @@
         </tr>
         </tbody>
     </table>
-</div>
+    <p>
+        The substitutions is the UCs are placed so that any combination of UCs of the same type will yield a sheets
+        where the substitution placement obeys the Loewenstein rule.</p>
+<p>
+    <a href="#fig:ucs">Figure 2</a> shows an example of a substituted <span style="font-style: italic">cis</span>-dioctahedral 2:1 UC.
+</p>
+                <figure id="fig:ucs">
+                <img alt="" class="fit-picture" decoding="auto" src="images/uc_top.png"
+                     width="40%"/>
+                <img alt="" class="fit-picture" decoding="auto" src="images/uc_side.png"
+                     width="45%"/>
+                <figcaption>
+                    <span style="font-style: italic">cis</span>-dioctahedral 2:1 UC top view (left) and side view (right).
+                </figcaption>
+            </figure>
+        <table>
+        <caption>Atom type colours</caption>
+        <colgroup>
+            <col span="5">
+        </colgroup>
+        <thead>
+        <tr>
+            <th>Element</th>
+            <th>Colour</th>
+            <th style="color: transparent">empty</th>
+            <th>Element</th>
+            <th>Colour</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Si</td>
+            <td style="background-color: yellow; font-weight: bolder">yellow</td>
+            <td style="color: transparent">empty</td>
+            <td>Al</td>
+            <td style="background-color: darkcyan; color: white; font-weight: bolder">cyan</td>
+        </tr>
+        <tr>
+            <td>O</td>
+            <td style="background-color: red; color: white; font-weight: bolder">red</td>
+            <td style="color: transparent">empty</td>
+            <td>Mg</td>
+            <td style="background-color: darkviolet; color: white; font-weight: bolder">purple</tD>
+        </tr>
+        <tr>
+            <td>H</td>
+            <td style="background-color: white; color: black; font-weight: bolder">white</td>
+            <td style="color: transparent">empty</td>
+            <td>C</td>
+            <td style="background-color: #333333; color: white; font-weight: bolder">gray</tD>
+        </tr>
+        </tbody>
+    </table>
+
+
+        </div>
+
 <div class="box">
     <h2 class="enum" id="toc_2">Getting Started</h2>
     <p>
 
     </p>
     <h3 class="enum" id="toc_2_1">Requirements</h3>
+    <p>On this workshop's virtual machine (VM), all of the requirements are already installed. If you would like to use ClayCode on your own computer, the following software and python packages need to be installed.</p>
     <ul>
-        <li>Python3.10</li>
+        <li>Python 3.10</li>
         <li>Pipx</li>
+        <li>GROMACS 2018 -- 2023</li>
+        <li>MDAnalysis (for <span style="font-style: italic">d</span>-spacing equilibration runs)</li>
     </ul>
     <h3 class="enum" id="toc_2_2">Installation</h3>
     <p>
@@ -226,16 +288,17 @@
         <h4 id="Installing_ClayCode">Installing ClayCode</h4>
         <ul>
             <li>Download ClayCode from the GitHub repository</li>
-            <li>Either clone the entire repository by opening a
-                terminal and run the following command:
-                <pre>git clone https://github.com/Erastova-group/ClayCode.git</pre>
-                Alternatively, you can download ClayCode as a zip file. To do this, click on
+            <li>
+<!--                Either clone the entire repository by opening a-->
+<!--                terminal and run the following command:-->
+<!--                <pre>git clone https://github.com/Erastova-group/ClayCode.git</pre>-->
+                Download ClayCode as a zip file. To do this, go to <a href="https://github.com/Erastova-group/ClayCode.git">https://github.com/Erastova-group/ClayCode.git</a>, click on
                 the &quot;&lt;&gt; Code&quot; button and select &quot;Download ZIP&quot;. Once downloaded, extract
                 the
                 contents of the zip file to a location of your choice.
-                <blockquote>
-                    Use <code>Ctrl + Alt + T</code> to open a terminal window.
-                </blockquote>
+<!--                <blockquote>-->
+<!--                    Use <code>Ctrl + Alt + T</code> to open a terminal window.-->
+<!--                </blockquote>-->
             </li>
             <!--            <li>-->
             <!--                Once you have downloaded the repository, open a terminal and use <code>cd</code>to navigate to the-->
@@ -249,8 +312,8 @@
                 <blockquote>
                     Use <code>cd ...</code> to navigate directories in the terminal.
                 </blockquote>
-                <blockquote class="info">When doing this on your own computer, you might need to first install the right
-                    version of Python (3.10).
+                <blockquote class="info">When doing this on your own computer, make sure all of the <a href="#toc_2_1">requirements</a> are
+                    installed.
                 </blockquote>
             </li>
             <li><p>Once the installation was successful, you can use the package with the command <code>ClayCode</code>
@@ -305,6 +368,14 @@
                     <img alt="build_options.pdf" src="images/build_options.png" style="vertical-align: middle">
                     <figcaption style="text-align: center">
                         Illustration of the build options in the specification file.
+                    </figcaption>
+                </figure>
+                <p><a href="#fig:stackings">Figure 3</a> shows different sheet and solvent arrangements that can be
+                    generated with ClayCode.</p>
+                <figure id="fig:stackings">
+                    <img alt="stackings.pdf" src="images/stackings.png"/>
+                    <figcaption>
+                        Illustration of different sheet and solvent arrangements that can be generated with ClayCode.
                     </figcaption>
                 </figure>
             </li>
@@ -377,9 +448,28 @@
     </div>
     <h2 class="enum" id="toc_4">Generating simulation input files</h2>
     <p>
-
+        ClayCode can be used to generate simulation input files for GROMACS.
+        Default run options are available for GROMACS versions 2018-2023 and the following run types:</p>
+    <ul>
+        <li>Energy minimisation (EM)</li>
+        <li>Equilibration (EQ)</li>
+        <ul>
+            <li>without temperature or pressure coupling</li>
+            <li>with temperature coupling at constant volume (NVT)</li>
+            <li>with pressure coupling at constant temperature and pressure (NpT)</li>
+        </ul>
+        <li><span>d</span>-spacing equilibration (D_SPACE)</li>
+        <li>Production (any other name)</li>
+    </ul>
+    <p>
+        Like the build instructions, the simulation input file is generated from a YAML file containing the simulation
+        run parameters.
     </p>
-    <div class="bbox"></div>
+    <div class="bbox">
+        <h3 id="Prepare_a_simulation_input_file">Prepare a simulation input file</h3>
+        <p>Inside the <code>builder</code> folder, you can find a template for the simulation input file
+            <code>simulation.yaml</code>.</p>
+    </div>
 </div>
 
 <!--<script src="scripts/generate_header.js"></script>-->
