@@ -54,6 +54,11 @@ N_SHEETS: 3
 # p(tot): 1.00
 # UC_RATIOS_LIST: [1]
 
+# interlayer ions to be used and the ratio between them
+# sum of all cation/anion contributions should be 1
+# IL_ION_RATIOS: {'Ca': 1,
+#               'Cl': 1}
+
 # -----------------------------------------------------------------------------
 
 # interlayer solvent present or not (Default True)
