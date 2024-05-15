@@ -70,7 +70,7 @@
         <tr>
             <td>CD11</td>
             <td><span style="font-style: italic">cis</span>-dioctahedral 1:1 UC</td>
-            <td></td>
+            <td>0012237</td>
             <!--    <td>\citecd11</td>-->
         </tr>
         <tr>
@@ -282,51 +282,24 @@
         </ul>
     </div>
     The following sections contain instructions for using ClayCode to build a clay model by specifying a target
-    stoichiometry and by giving UC indices and their ratios.
-    <h3 class="enum" id="toc_3_1">Preparing a clay model with a target composition</h3>
-    The first option is to provide a target composition file in CSV format. This file should contain the target
-    composition of the clay model.
-    For this workshop we suggest setting one of the following Clay Minerals Society source clay compositions (<a
-        href="https://www.clays.org/sourceclays_data/">clays.org/sourceclays_data/</a>) as the target:
-    <ul>
-        <li>SWy-1/SWy-2/SWy-3</li>
-        <!--        <li>KGa-1</li>-->
-        <!--        <li></li>KGa-2</li>-->
-        <li>SAz1/SAz-2</li>
-        <li>STx-1</li>
-        <li>NG-1</li>
-        <li>NAu-1</li>
-        <li>NAu-2</li>
-    </ul>
-    <div class="bbox">
-        <h3 id="Prepare_the_target_composition_file">Prepare the target composition file</h3>
-        <p>Inside the <code>builder</code> folder, you can find a template for the target composition file
-            <code>target_composition.csv</code>.</p>
-        <ul>
-            <li>Add a new entry for your selected clay.</li>
-            <li>
-                <figure>
-                    <img alt="target_composition.png" src="images/target_composition.png"/>
-                    <figcaption>
-                        The column header identifies the clay type, the entries below describe the average tetrahedral
-                        and
-                        octahedral UC occupancies, charges and interlayer ion types and ratios.
-                    </figcaption>
-                </figure>
-            </li>
-        </ul>
-    </div>
+    stoichiometry and by giving UC indices and their ratios. In both cases, the user needs to provide a specifications
+    file containing the build instructions.<br>
+    --------
+    <img alt="input_parameters.png" src="images/input_parameters.png">
+    (I guess we don't need that figure)
+
+    <figure>
+        <img alt="build_options.pdf" src="images/build_options.png">
+        <figcaption>
+            Illustration of the build options in the specification file.
+        </figcaption>
+    </figure>
     <div class="bbox">
         <h3 id="Prepare_the_specifications_file">Prepare the specifications file</h3>
         <p>Inside the <code>builder</code> folder, you can find a template for the specifications file
             <code>specifications.yaml</code>. Some of the options are illustrated in <a href="#fig:build_options">figure
                 1</a>.</p>
-        <figure>
-            <img alt="build_options.pdf" src="images/build_options.png">
-            <figcaption>
-                Illustration of the build options in the specification file.
-            </figcaption>
-        </figure>
+
         <ul>
             <li>have a look at the different options in the <code>specifications.yaml</code> file, then adjust some of
                 the build specifications such as the number of clay sheets in the stack or species and concentration of
@@ -338,6 +311,40 @@
     <ul>
         <li>Python3.9</li>
         <li>Pipx</li>
+    </ul>
+</div>
+<h3 class="enum" id="toc_3_1">Preparing a clay model with a target composition</h3>
+The first option is to provide a target composition file in CSV format. This file should contain the target
+composition of the clay model.
+For this workshop we suggest setting one of the following Clay Minerals Society source clay compositions (<a
+        href="https://www.clays.org/sourceclays_data/">clays.org/sourceclays_data/</a>) as the target:
+<ul>
+    <li>SWy-1/SWy-2/SWy-3</li>
+    <!--        <li>KGa-1</li>-->
+    <!--        <li></li>KGa-2</li>-->
+    <li>SAz1/SAz-2</li>
+    <li>STx-1</li>
+    <li>NG-1</li>
+    <li>NAu-1</li>
+    <li>NAu-2</li>
+</ul>
+<div class="bbox">
+    <h3 id="Prepare_the_target_composition_file">Prepare the target composition file</h3>
+    <p>Inside the <code>builder</code> folder, you can find a template for the target composition file
+        <code>target_composition.csv</code>.</p>
+    <ul>
+        <li>Add a new entry for your selected clay.</li>
+        <li>
+            <figure>
+                <img alt="formula.png" src="images/formula.png"/>
+                <img alt="target_composition.png" src="images/target_composition.png"/>
+                <figcaption>
+                    The column header identifies the clay type, the entries below describe the average tetrahedral
+                    and
+                    octahedral UC occupancies, charges and interlayer ion types and ratios.
+                </figcaption>
+            </figure>
+        </li>
     </ul>
 </div>
 
