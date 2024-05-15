@@ -214,9 +214,10 @@
 
     </p>
     <h3 class="enum" id="toc_2_1">Requirements</h3>
-    <p>
-
-    </p>
+    <ul>
+        <li>Python3.10</li>
+        <li>Pipx</li>
+    </ul>
     <h3 class="enum" id="toc_2_2">Installation</h3>
     <p>
 
@@ -249,7 +250,7 @@
                     Use <code>cd ...</code> to navigate directories in the terminal.
                 </blockquote>
                 <blockquote class="info">When doing this on your own computer, you might need to first install the right
-                    version of Python (3.9).
+                    version of Python (3.10).
                 </blockquote>
             </li>
             <li><p>Once the installation was successful, you can use the package with the command <code>ClayCode</code>
@@ -284,76 +285,102 @@
     The following sections contain instructions for using ClayCode to build a clay model by specifying a target
     stoichiometry and by giving UC indices and their ratios. In both cases, the user needs to provide a specifications
     file containing the build instructions.<br>
-    --------
-    <img alt="input_parameters.png" src="images/input_parameters.png">
-    (I guess we don't need that figure)
+    <!--    &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+    <!--    <img alt="input_parameters.png" src="images/input_parameters.png">-->
+    <!--    (I guess we don't need that figure)-->
 
-    <figure>
-        <img alt="build_options.pdf" src="images/build_options.png">
-        <figcaption>
-            Illustration of the build options in the specification file.
-        </figcaption>
-    </figure>
+
     <div class="bbox">
         <h3 id="Prepare_the_specifications_file">Prepare the specifications file</h3>
-        <p>Inside the <code>builder</code> folder, you can find a template for the specifications file
-            <code>specifications.yaml</code>. Some of the options are illustrated in <a href="#fig:build_options">figure
-                1</a>.</p>
+
 
         <ul>
-		<li> Adjust the build specifications for your clay</li>
-            <li>Have a look at the different options in the <code>specifications.yaml</code> file, such as the number of clay sheets in the stack or species and concentration of
-                bulk ions. The required input parameters are:
-	<ul>
-	    <li> <code>OUTPUT</code> : '/path/to/directory'</li>
-	    <li> <code>CLAY_COMP</code> : /path/to/file.csv</li>
-	    <li> <code>SYSNAME</code> : clay_name</li>
-	    <li> <code>CLAY_TYPE</code> : unit_cell_type</li>
-	</ul>
-	    </li>
-    </ul>
+            <li> Adjust the build specifications for your clay</li>
+            <li>
+                <p>Inside the <code>builder</code> folder, you can find a template for the specifications file
+                    <code>specifications.yaml</code>. Some of the options are illustrated in <a
+                            href="#fig:build_options">figure
+                        1</a>.</p>
+                <figure id="fig:build_options" style="display: inline-block; margin: 0 auto">
+                    <img alt="build_options.pdf" src="images/build_options.png" style="vertical-align: middle">
+                    <figcaption style="text-align: center">
+                        Illustration of the build options in the specification file.
+                    </figcaption>
+                </figure>
+            </li>
+            <li><p>Have a look at the different options in the <code>specifications.yaml</code> file, such as the number
+                of
+                clay sheets in the stack or species and concentration of
+                bulk ions.</p>
+                <p>The required input parameters are:</p>
+                <ul>
+                    <li><code>OUTPUT</code> : '/path/to/directory'</li>
+                    <li><code>CLAY_COMP</code> : /path/to/file.csv</li>
+                    <li><code>SYSNAME</code> : clay_name</li>
+                    <li><code>CLAY_TYPE</code> : unit_cell_type</li>
+                </ul>
+            </li>
+        </ul>
     </div>
-    <h3>Requirements</h3>
-    <ul>
-        <li>Python3.9</li>
-        <li>Pipx</li>
-    </ul>
-</div>
-<h3 class="enum" id="toc_3_1">Preparing a clay model with a target composition</h3>
-The first option is to provide a target composition file in CSV format. This file should contain the target
-composition of the clay model.
-For this workshop we suggest setting one of the following Clay Minerals Society source clay compositions (<a
-        href="https://www.clays.org/sourceclays_data/">clays.org/sourceclays_data/</a>) as the target:
-<ul>
-    <li>SWy-1/SWy-2/SWy-3</li>
-    <!--        <li>KGa-1</li>-->
-    <!--        <li></li>KGa-2</li>-->
-    <li>SAz1/SAz-2</li>
-    <li>STx-1</li>
-    <li>NG-1</li>
-    <li>NAu-1</li>
-    <li>NAu-2</li>
-</ul>
-<div class="bbox">
-    <h3 id="Prepare_the_target_composition_file">Prepare the target composition file</h3>
-    <p>Inside the <code>builder</code> folder, you can find a template for the target composition file
-        <code>target_composition.csv</code>.</p>
-    <ul>
-        <li>Add a new entry for your selected clay.</li>
-        <li>
-            <figure>
-                <img alt="formula.png" src="images/formula.png"/>
-                <img alt="target_composition.png" src="images/target_composition.png"/>
-                <figcaption>
-                    The column header identifies the clay type, the entries below describe the average tetrahedral
-                    and
-                    octahedral UC occupancies, charges and interlayer ion types and ratios.
-                </figcaption>
-            </figure>
-        </li>
-    </ul>
-</div>
 
+
+    <h3 class="enum" id="toc_3_1">Preparing a clay model with a target composition</h3>
+    The first option is to provide a target composition file in CSV format. This file should contain the target
+    composition of the clay model.
+    For this workshop we suggest setting one of the following Clay Minerals Society source clay compositions (<a
+        href="https://www.clays.org/sourceclays_data/">clays.org/sourceclays_data/</a>) as the target:
+    <ul>
+        <li>SWy-1/SWy-2/SWy-3</li>
+        <!--        <li>KGa-1</li>-->
+        <!--        <li></li>KGa-2</li>-->
+        <li>SAz1/SAz-2</li>
+        <li>STx-1</li>
+        <li>NG-1</li>
+        <li>NAu-1</li>
+        <li>NAu-2</li>
+    </ul>
+    <div class="bbox">
+        <h3 id="Prepare_the_target_composition_file">Prepare the target composition file</h3>
+        <p>Inside the <code>builder</code> folder, you can find a template for the target composition file
+            <code>target_composition.csv</code>.</p>
+        <ul>
+            <li>Add a new entry for your selected clay.</li>
+            <li>
+                <figure id="fig:formula">
+                    <img alt="formula.png" src="images/formula.png"/>
+                    <img alt="target_composition.png" src="images/target_composition.png"/>
+                    <figcaption>
+                        The column header identifies the clay type, the entries below describe the average tetrahedral
+                        and
+                        octahedral UC occupancies, charges and interlayer ion types and ratios.
+                    </figcaption>
+                </figure>
+            </li>
+        </ul>
+    </div>
+    <h3 class="enum" id="toc_3_2">Preparing a clay model with UC indices and their ratios</h3>
+    <p>
+        The second option is to provide UC indices and their ratios in the specifications file. Choose this method if
+        you
+        want to use specific UCs and know their ratios within a sheet.</p>
+    <div class="bbox">
+        <h3 id="Prepare_the_UC_indices_and_ratios_file">Prepare the UC indices and ratios file</h3>
+        <p>When choosing this option, instead of providing the path to the target composition file in the
+            <code>specifications.yaml</code> file, delete or comment out the <code>CLAY_COMP</code> line and instead add
+            the UC indices and ratios with the <code>UC_INDEX_RATIOS</code> option.</p>
+        <blockquote>
+            For example, a simplified montmorillonite can be constructed from the <span
+                style="font-style: italic">cis</span>-dioctahedral 2:1 C213 UC:
+            <pre>UC_INDEX_RATIOS: {C213: 1}</pre>
+        </blockquote>
+
+    </div>
+    <h2 class="enum" id="toc_4">Generating simulation input files</h2>
+    <p>
+
+    </p>
+    <div class="bbox"></div>
+</div>
 
 <!--<script src="scripts/generate_header.js"></script>-->
 <script src="scripts/generate_overview.js"></script>
