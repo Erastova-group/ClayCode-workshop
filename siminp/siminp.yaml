@@ -18,7 +18,7 @@
 # D-SPACE - d-spacing equilibration
 # (any other name) - production run
 
-# Select run type and required specifications:
+# Example for run tyes with specifications:
 # SIMINP:
 #  EM:
 #     FREEZE_CLAY: True # clay positions are kept fixed
@@ -35,6 +35,8 @@
 #      SHEET_WAT = 2
 #      2. Number of water molecules per unit cell
 #      UC_WAT = 0.1
+#      CONDA_ENV: ClayCode # optional conda environment for d-spacing equilibration run
+#      SHELL: bash # optional shell for d-spacing equilibration run
 #  P:
 #      NSTEPS: 100000 # number of steps
 #  P_1:
@@ -47,14 +49,6 @@ SIMINP:
       - clay
   EQ_NpT:
     NSTEPS: 1000000
-
-#  D-SPACE:
-#    D_SPACE: 15.0
-#    NSTEPS: 1000000
-#    SHEET_WAT: 1
-#
-#  ctl:
-#    NSTEPS: 1000
 
 # =============================================================================
 # Path specifications
@@ -83,6 +77,9 @@ INTOP: 'file_name.top'
 # RUN_SCRIPT: '/path/to/template/file.sh'
 RUN_SCRIPT: '/path/to/script.sh'
 
+# Specify a shell for the run script (default: bash)
+#SHELL: bash
+
 # =============================================================================
 # Optional: Simulation Runs Specifications
 # =============================================================================
@@ -99,8 +96,10 @@ RUN_PRMS:
 #  EM: '/media/hannahpollak/free/test_cc/IMt_1/em.mdp'
   EQ_NVT: '/path/to/nvt_mdp/file.mdp'
   EQ_NpT: '/path/to/npt_mdp/file.mdp'
-  D_SPACE: '/path/to/d_spcaing_mdp/file.mdp'
+  D_SPACE: '/path/to/d_spacing_mdp/file.mdp'
   ctl: '/path/to/production_run_mdp/file.mdp'
+
+
 
 # -----------------------------------------------------------------------------
 # bash alias for used GROMACS version
