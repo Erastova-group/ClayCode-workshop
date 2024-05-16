@@ -1,4 +1,6 @@
-# ClayCode workshop
+# ClayCode workshop 
+
+<img src="html/images/ClayCode_colour.png" width="30%">
 
 Link to **[Workshop materials](./html/RiP_ws.html).**
 
@@ -9,5 +11,7 @@ Link to **[Workshop materials](./html/RiP_ws.html).**
 - ### molecule insertion:
     - [decanoic_acid.gro](./insert-molecules/decanoic_acid.gro)
     - [decanoic_acid.itp](./insert-molecules/decanoic_acid.itp)
+    - [charmm36.ff](./insert-molecules/charmm36.ff)
+    - [genion.mdp](./insert-molecules/genion.mdp)
 - ### siminp:
      - [siminp.yaml](./siminp/siminp.yaml)
