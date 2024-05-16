@@ -2,7 +2,7 @@
 
 <img src="html/images/ClayCode_colour.png" width="30%">
 
-Link to **[Workshop materials](./html/RiP_ws.html).**
+Link to **[worksheet](./html/RiP_ws.html).**
 
 ## Data for practicals:
 - ### builder:
@@ -15,3 +15,4 @@ Link to **[Workshop materials](./html/RiP_ws.html).**
     - [genion.mdp](./insert-molecules/genion.mdp)
 - ### siminp:
      - [siminp.yaml](./siminp/siminp.yaml)
+     - [em.mdp](./MDP/em.mdp)
