@@ -271,6 +271,52 @@
 <div class="box">
     <h2 class="enum" id="toc_2">Getting Started</h2>
 
+        <div class="bbox">
+        <h4 id="Installing_ClayCode">Installing ClayCode</h4>
+        <ul>
+            <li>Download ClayCode from the GitHub repository</li>
+            <li>
+                <!--                Either clone the entire repository by opening a-->
+                <!--                terminal and run the following command:-->
+                <!--                <pre>git clone https://github.com/Erastova-group/ClayCode.git</pre>-->
+                Download ClayCode as a zip file. To do this, go to <a
+                    href="https://github.com/Erastova-group/ClayCode.git">https://github.com/Erastova-group/ClayCode.git</a>,
+                click on
+                the &quot;&lt;&gt; Code&quot; button and select &quot;Download ZIP&quot;. Once downloaded, extract
+                the
+                contents of the zip file to a location of your choice.
+                <!--                <blockquote>-->
+                <!--                    Use <code>Ctrl + Alt + T</code> to open a terminal window.-->
+                <!--                </blockquote>-->
+            </li>
+            <!--            <li>-->
+            <!--                Once you have downloaded the repository, open a terminal and use <code>cd</code>to navigate to the-->
+            <!--                &quot;ClayCode&quot; directory in your terminal.-->
+            <!--                <pre>cd ClayCode</pre>-->
+            <!--            </li>-->
+            <li>Inside the ClayCode folder, there is the <code>install.sh</code> installation file. Use it to
+                install
+                the <code>ClayCode</code> package:
+                <pre>bash install.sh</pre>
+
+                <blockquote>
+                    Use <code>cd ...</code> to navigate directories in the terminal.
+                </blockquote>
+                <blockquote class="info">When doing this on your own computer, make sure all of the <a
+                        href="#toc_2_1">requirements</a>
+                    are
+                    installed.
+                </blockquote>
+            </li>
+            <li><p>Once the installation was successful, you can use the package with the command
+                <code>ClayCode</code>
+                <blockquote>
+                    For example, to build a model, the command would be:
+                    <pre>ClayCode builder &lt;options&gt;</pre>
+                </blockquote>
+            </li>
+        </ul>
+    </div>
     <h3 class="enum" id="toc_2_1">Connecting to the virtual machine</h3>
     <div class="bbox">
         <h3 id="Connect_to_the_virtual_machine_from_Windows">Connect to the virtual machine from Windows</h3>
@@ -297,7 +343,6 @@
                 again
                 for connections to this computer</q> and click <q>Yes</q></li>
             <li>When prompted to enter credentials, enter the password <code>cl4ysRock</code>
-
 
                 <p><img alt="" src="images/P5.png"></p></li>
 
@@ -417,7 +462,7 @@
         <h3 id="Download_the_workshop_repository">Download the workshop repository</h3>
         <ul>
             <li>Download the workshop repository from the GitHub repository:
-                <a href="https://github.com/hp115/Rip-WS">github.com/hp115/Rip-WS</a>
+                <a href="https://github.com/Erastova-group/ClayCode-workshop">github.com/Erastova-group/ClayCode-workshop</a>
             </li>
         </ul>
     </div>
@@ -747,7 +792,8 @@
         <h3 id="Update_the_topology_file">Update the topology file</h3>
         <ol>
             <li>Add the decanoic acid molecules and their force field parameters to the topology file.</li>
-            <li>Open the topology file final topology file inside the EM folder and add the 10 inserted DECA
+            <li>Open the topology file topology file ending in <code>pre_em.top</code> inside the EM folder and add the
+                10 inserted DECA
                 molecules
                 at the bottom of the <code>[ molecules ]</code> section.<br>
             <li>Include the force field parameters for the decanoic acid molecules in the topology file. In this
@@ -858,12 +904,81 @@ information for each atom.
         minimisation.</p>
     <div class="bbox">
         <h3 id="Prepare_a_simulation_input_file">Prepare a simulation input file</h3>
-        <p>Inside the <code>builder</code> folder, you can find a template for the simulation input file
-            <code>simulation.yaml</code>.</p>
-
+        <ul>
+            <li>Prepare a simulation input file for an energy minimisation run</li>
+            <li>Inside the <code>builder</code> folder, you can find a template for the simulation input file
+                <code>simulation.yaml</code>.
+            </li>
+            <li>
+                <blockquote>
+                    <p><span style="font-weight: bolder">Notes: </span></p>
+                    <ul>
+                        <li>You can specify a run type and generate a mdp file with ClayCode's default parameters or
+                            supply your on mdp files
+                        </li>
+                        <li>When adding new MDP parameters, these can be added as the default parameters for all runs,
+                            as defaults for one run type or ensemble or specifically for one run
+                        </li>
+                        <li>For <span style="font-style: italic">d</span>-space equilibration runs, a conda environment
+                            and shell can be specified
+                        </li>
+                        <li>The run script can be customised by specifying a shell or providing a header template.</li>
+                    </ul>
+                </blockquote>
+            </li>
+        </ul>
+    </div>
+    <p>Now the energy minimisation files can be prepared.</p>
+    <div class="bbox">
+        <h3 id="Generate_the_simulation_input_files">Generate the simulation input files</h3>
+        <ul>
+            <li>Use ClayCode to generate the simulation input files and scripts for an energy minimisation run:</li>
+            <li>
+                <pre>ClayCode siminp -f /path/to/simulation.yaml</pre>
+            </li>
+            <li>This will generate a folder with all required files for the energy minimisation run and place it in the
+                specified output folder.
+            </li>
+        </ul>
+    </div>
+    <p>Once the simulation input files are generated, the energy minimisation can be performed.</p>
+    <div class="bbox">
+        <h3 id="Perform_the_energy_minimisation">Perform the energy minimisation</h3>
+        <ul>
+            <li>Run the energy minimisation run script</li>
+            <li>
+            <pre>bash &lt;run_script&gt;.sh</pre>
+            </li>
+        </ul>
     </div>
 
 </div>
+<div class="box">
+    <h2 class="enum" id="toc_6">What's next?</h2>
+    <p>ClayCode already contains a small range of clay-system specific analysis and plotting scripts. These are not yet
+        available as part of the ClayCode application but can be used when ClayCode is installed as a package (using pip
+        rather than pipx).</p>
+    <p>We are planning to add some more UCs will be added (<a href="#tab:ucs">table 1</a>). In the current version,
+        ClayCode data can be used to add a new unit cell type by supplying coordinates and the topology of one
+        unsubstituted unit cell. In this procedure, it is possible to specify which and how many substitutions should be
+        added.</p>
+</div>
+<div class="box">
+    <h2 class="enum" id="toc_7">Suggestions</h2>
+    <p>We would love you to get involved in the development of ClayCode!</p>
+    <ul>
+        <li>Is something not working as expected?</li>
+        <li>Which features would you like to see in future versions of ClayCode?</li>
+        <li>Are you interested in contributing to the development of ClayCode?</li>
+    </ul>
+    <p>Let us know now or use the discussion board, raise an issue, or submit a pull request on the GitHub
+        repository.</p>
+
+    <p style="text-align: center; font-size: larger; font-weight: bolder; color: #004f71">Thank you for your
+        participation!
+    </p>
+</div>
+
 
 <script src="scripts/generate_header.js"></script>
 <script src="scripts/generate_overview.js"></script>
