@@ -67,21 +67,21 @@ SIMINP:
 # INPATH: '/storage/clay_models'
 # OUTPATH: '/storage/clay_models'
 
-INPATH: '/media/hannahpollak/free/new_clays/Ca/NAu-1-fe/EM/'
-OUTPATH: '/media/hannahpollak/free/new_clays/Ca/NAu-1-fe/RUNS'
-RUN_PATH: '/nobackup/projects/bddur15/3_NAu_models/NAu-1-fe/Ca/'
+INPATH: '/path/to/input/directory'
+OUTPATH: '/path/to/output/directory'
+RUN_PATH: '/path/to/run/directory'
 
 # 2. Manually specifies absolute or relative paths of input GRO and TOP files
 # if none of the options from 1. are given, output files will be placed inside
 # parent directory of GRO, if a checkpoint CPT file with the same path and
 # namestem as INGRO is found, it will be used as input for the simulation run
-INGRO: 'NAu-1-fe_7_5_solv_ions_em.gro'
-INTOP: 'NAu-1-fe_7_5_solv_ions_em.top'
+INGRO: 'file_name.gro'
+INTOP: 'file_name.top'
 
 # Template file for run script
 # If not given, run commands will be written to an empty shell script file.
 # RUN_SCRIPT: '/path/to/template/file.sh'
-RUN_SCRIPT: '/media/hannahpollak/free/new_clays/Ca/NAu-1-fe/RUNS/script.sh'
+RUN_SCRIPT: '/path/to/script.sh'
 
 # =============================================================================
 # Optional: Simulation Runs Specifications
@@ -94,13 +94,13 @@ RUN_SCRIPT: '/media/hannahpollak/free/new_clays/Ca/NAu-1-fe/RUNS/script.sh'
 #   EQ_NVT_R: '/path/to/new/EQ_NVT_R/mdp/file.mdp'
 #   P_1: '/path/to/new/P_1/mdp/file.mdp'
 
-MDP_PRMS: '/media/hannahpollak/free/new_clays/ads.mdp'
+MDP_PRMS: '/path/to/mdp/file.mdp'
 RUN_PRMS:
 #  EM: '/media/hannahpollak/free/test_cc/IMt_1/em.mdp'
-  EQ_NVT: '/media/hannahpollak/free/new_clays/1_EQ_NVT.mdp'
-  EQ_NpT: '/media/hannahpollak/free/new_clays/2_EQ_NpT.mdp'
-  D_SPACE: '/media/hannahpollak/free/new_clays/eq_d_spacing_01.mdp'
-  ctl: '/media/hannahpollak/free/new_clays/ads.mdp'
+  EQ_NVT: '/path/to/nvt_mdp/file.mdp'
+  EQ_NpT: '/path/to/npt_mdp/file.mdp'
+  D_SPACE: '/path/to/d_spcaing_mdp/file.mdp'
+  ctl: '/path/to/production_run_mdp/file.mdp'
 
 # -----------------------------------------------------------------------------
 # bash alias for used GROMACS version
@@ -110,148 +110,12 @@ RUN_PRMS:
 GMX: gmx
 
 # GROMACS version (specify if different from local GROMACS installation)
-GMX_VERSION: 2022
-
-# =============================================================================
-# General specifications for clay model construction
-# =============================================================================
+GMX_VERSION: 
 
 # =============================================================================
 # Required Parameters
 # =============================================================================
 
-#OUTPATH: .
+# name of system to call according to CLAY_COMP
+SYSNAME: 
 
-# name of system to call according to CLAY_COMP (exp_clay.csv)
-# compositions currently included are: 'NAu-1-fe' 'NAu-2-fe' 'NG-1'  'SWa-1' 'L31' 'IMt-1' 'KGa-1'
-SYSNAME: NAu-1-fe
-
-# specify whether new clay model should be constructed:
-# new - a new clay model is constructed
-# load - sheet coordinates or unit cell sequences are loaded from existent ._gro or .npy files
-# load: [X, Y]
-# with X - 'np' or '_gro', Y - '.npy' or '._gro' filename
-# False - no clay model is constructed
-#BUILD: new
-
-# name of .csv file with target stoichiometry
-#CLAY_COMP: exp_clay.csv
-
-# clay type available options in 'clay_units' directory:
-# Dioctahedral 2:1 - D21
-# Trioctahedral 2:1 - T21
-# Dioctahedral 1:1 - D11
-# Trioctahedral 1:1 - T11
-# layered double hydroxide 3:1 - L31
-# layered double hydroxide 2:1 - L21
-# Sepiolite - SEP
-
-#CLAY_TYPE: D21
-
-
-# =============================================================================
-# Optional: Clay Sheet and Interlayer Specifications
-# =============================================================================
-
-# number of unit cells in x direction (Default 7)
-#X_CELLS: 7
-#
-## number of unit cells in y direction (Default 5)
-#Y_CELLS: 5
-#
-## number of unit cells in z direction (Default 3)
-#N_SHEETS: 3
-
-# ----------------------------------------------------------------------------
-# Optional: Unit Cell Composition and Ratios input
-# if not given, these will be calculated from data in the CLAY_COMP .csv file
-# (Default UC_INDEX_LIST: [], UC_RATIOS_LIST: [])
-# -----------------------------------------------------------------------------
-
-# required UCs to builder system as list
-# UC_INDEX_LIST: [1]
-
-# probability list of unit cells in system
-# p(tot): 1.00
-# UC_RATIOS_LIST: [1]
-
-# -----------------------------------------------------------------------------
-
-# interlayer solvent present or not (Default True)
-#IL_SOLV: True
-
-# -----------------------------------------------------------------------------
-# Optional: Interlayer Ion Specification Options (comment the other options!)
-# (Default UC_WATERS: 20)
-# -----------------------------------------------------------------------------
-
-# 1. Number of water molecules that should be added per ion (ION_WATERS)
-# a. as ion species dictionary for hydration number
-# ION_WATERS: {'Ca': 12,
-#               'Na': 12
-#               }
-
-# b. as ion species int for hydration number
-#ION_WATERS : 22
-
-# 3. OR per unit cell
-#UC_WATERS: 10
-
-# 4. OR for a target d-spacing value in A
-#SPACING_WATERS: 20
-
-# =============================================================================
-# Optional: Simulation Box Specifications
-# =============================================================================
-
-# full simulation box height in A (Default 150.0)
-#BOX_HEIGHT: 150.0
-
-# =============================================================================
-# Optional: Solvation and Bulk Ions Specifications
-# =============================================================================
-
-# Bulk solvent added or not (Default: True)
-#BULK_SOLV: True
-
-# Ion species and concentration in mol/L name to add in bulk solvent
-# (Default: BULK_IONS:
-#  Na: 0.1)
-
-#BULK_IONS:
-#  Ba: 0.1
-#  Na: 0.1
-
-# =============================================================================
-# Optional: Simulation Runs Specifications
-# =============================================================================
-
-# Generate scripts and '.mdp' files for simulation runs.
-# Available options:
-# EM - energy minimisation
-# EQ - equilibration
-# D-SPACE - d-spacing equilibration
-# P - production
-# SIMINP: [EM, D-SPACE]
-
-# select where EM and EQ should be run (Default: False)
-# MDRUNS_REMOTE: False
-
-# -----------------------------------------------------------------------------
-# d-spacing equilibration options
-# -----------------------------------------------------------------------------
-
-# Target d-spacing in A
-# D_SPACE: 15.28
-
-# Water molecules to be removed at a time during d-spacing equilibration runs
-# REMOVE_STEPS: 1000
-
-# Absolute number of water molecules per interlayer space
-# SHEET_WAT: 2
-
-# Number of water molecules per unit cell
-# UC_WAT: 0.1
-
-# Percentage of water molecules from interlayer
-# PERCENT_W
