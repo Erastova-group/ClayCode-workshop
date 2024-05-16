@@ -103,7 +103,7 @@ The first option is to provide a target composition file in CSV format. This fil
 Inside the `builder` folder, you can find a template for the target composition file `target_composition.csv`.
 
 *   Add a new entry for your selected clay.
-*   ![target_composition.png](images/target_composition.png)
+*   ![target_composition.png](html/images/target_composition.png)
     
     The column header identifies the clay type, the entries below describe the average tetrahedral and octahedral UC occupancies, charges and interlayer ion types and ratios.
     

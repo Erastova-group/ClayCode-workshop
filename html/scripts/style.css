@@ -1,6 +1,3 @@
-
-
-
 @font-face {
     font-family: 'Source Sans 3';
     src: url('../fonts/SourceSans3-Regular.ttf') format('truetype');
@@ -82,6 +79,7 @@ body {
 p {
     text-align: justify;
     text-align-all: justify;
+    margin-bottom: 1rex;
 }
 
 a {
@@ -242,7 +240,7 @@ p i > li:first-child {
 
 }
 
-p i > li:last-child {
+p li > li:last-child {
     margin-bottom: 20px;
 }
 
@@ -261,18 +259,19 @@ ul, ol {
 }
 
 ul > li p, ol > li p {
-    margin-top: 0px;
-    margin-bottom: 0px;
-    padding: 0px;
-    padding-top: 0px;
+    margin-top: 0;
+    margin-bottom: 0.8rex;
+    padding: 0;
+    padding-top: 0;
 }
+
 
 /*ul :first-child, ol :first-child {*/
 /*    margin-top: 0;*/
 /*}*/
 
 .box ul, .box ol {
-    padding-bottom: 0px;
+    padding-bottom: 0;
     margin-bottom: 20px;
 }
 
@@ -826,12 +825,8 @@ pre[class*="language-"] {
 .bbox, .tbox {
     max-width: 960px;
     padding: 0.5ex 20px;
-    border-top: 1px #041E42 dashed;
+    border: 1px solid #041E42;
     margin: 20px auto;
-}
-
-.bbox:last-of-type, .tbox:last-of-type {
-    border-bottom: 1px #041E42 dashed;
 }
 
 
@@ -860,7 +855,14 @@ pre[class*="language-"] {
 
 .bbox ul > li, .bbox ol > li {
     /*margin-top: 10px;*/
-    margin-bottom: 10px;
+    margin-bottom: 0.7rex;
+    /*padding-top: 10px;*/
+    /*padding-bottom: 10px;*/
+}
+
+ol > li, ul > li {
+    /*margin-top: 10px;*/
+    margin-bottom: 0.5rex;
     /*padding-top: 10px;*/
     /*padding-bottom: 10px;*/
 }
@@ -914,8 +916,25 @@ pre[class*="language-"] {
     line-style: none;
     color: inherit;
 }
+.bbox ul ol > li:first-child,
+.bbox ul ol > li:not(:first-child),
+.bbox ol ol > li:first-child,
+.bbox ol ol > li:not(:first-child) {
+    list-style-type: lower-roman;
+    font-size-adjust: initial;
+    line-height: initial;
+    font-weight: initial;
+    line-style: none;
+    color: inherit;
+}
 
 .bbox ol ol {
+    counter-reset: nested 0;
+    list-style: none;
+    font-weight: initial;
+    color: #393939;
+}
+.bbox ul ol {
     counter-reset: nested 0;
     list-style: none;
     font-weight: initial;
@@ -968,6 +987,8 @@ p.remember::before {
     font-style: italic;
 }
 
+
+
 body {
     counter-reset: task project section subsection;
 }
@@ -1000,7 +1021,7 @@ h4.options {
 
 .bbox h3::before {
     counter-increment: task 1;
-    content: "Task " counter(task);
+    content: "Task " counter(task) ": ";
 }
 
 .tbox h3::before {
@@ -1018,8 +1039,20 @@ h2.enum::before {
 .scrollUpButton {
     display: none;
     position: fixed;
-    width: 0;
-    height: 0;
+    right: 20px;
+    bottom: 20px;
+    padding: 10px;
+    background-color: white;
+    color: #004f71;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.scrollUpButton:hover {
+    background-color: #f1f1f1;
+    color: #041E42;
 }
 
 .collapsible {
@@ -1028,12 +1061,12 @@ h2.enum::before {
   cursor: pointer;
   padding: 18px;
   width: 100%;
-  border: 1px solid #004f71;
+  border: none;
   text-align: left;
   outline: none;
   font-size: 16px;
     font-weight: bold;
-    border-radius: 5px 5px 0px 0px;
+    border-radius: 5px;
     margin-top: 10px;
 }
 
@@ -1051,14 +1084,45 @@ h4 + collapsible:first-of-type {
 }
 .pcontent {
     padding: 0 0 10px 10px;
-    display: block;
+    display: none;
     overflow: hidden;
 }
 
+.pcollapsible::after {
+    content: "\A(click to expand)";
+    white-space: pre;
+    text-align-last: right;
+}
+
+.pcollapsible.active::after {
+    content: "\A(click to contract)";
+    white-space: pre;
+}
+
+.pcollapsible:hover {
+  background-color: #f1f1f1;
+    color: #041E42;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.collapsible:hover {
+  background-color: #f1f1f1;
+    color: #041E42;
+    border-radius: 5px;
+    border: none;
+}
+
+.collapsible.active {
+  background-color: #041E42;
+    color: white;
+    border-radius: 5px 5px 0px 0px;
+    border: none;
+}
 
 .content {
     padding: 10px 10px 20px 20px;
-    display: block;
+    display: none;
     overflow: hidden;
     background-color: white;
     border: none;
@@ -1086,13 +1150,39 @@ h4 + collapsible:first-of-type {
 }
 
 .dyslexiaButton {
-    display: none;
+    display: block;
     position: fixed;
-    height: 0;
-    width: 0;
+    right: 20px;
+    top: 20px;
+    padding: 10px;
+    background-color: #EDD1B0;
+    color: #004f71;
+    border: 1px solid #004f71;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 250px;
+    height: 50px;
+    text-align: center;
+    justify-content: center;
+    font-size: 16px;
+    font-family: OpenDyslexicAltaRegular, sans-serif;
+    font-weight: bold;
+}
+
+.dyslexiaButton:hover {
+    background-color: #EDDD6B;
+    color: #004f71;
+    font-weight: bold;
+}
+
+
+.scrollUpButton:hover {
+    background-color: lightgoldenrodyellow;
+    color: #041E42;
 }
 
 blockquote.info, .bbox ul > li blockquote.info, .bbox ol > li blockquote.info {
     border-color: darkslateblue;
     color: darkslategrey;
 }
+
