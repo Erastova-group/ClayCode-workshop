@@ -15,4 +15,4 @@ Link to **[worksheet](./html/RiP_ws.html).**
     - [genion.mdp](./insert-molecules/genion.mdp)
 - ### siminp:
      - [siminp.yaml](./siminp/siminp.yaml)
-     - [em.mdp](./MDP/em.mdp)
+     - [em.mdp](./siminp/MDP/em.mdp)
