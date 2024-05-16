@@ -270,11 +270,80 @@
 
 <div class="box">
     <h2 class="enum" id="toc_2">Getting Started</h2>
-    <p>
 
-    </p>
-    <h3 class="enum" id="toc_2_1">Requirements</h3>
-    <p>On this workshop's virtual machine (VM), all of the requirements are already installed. If you would like to use
+    <h3 class="enum" id="toc_2_1">Connecting to the virtual machine</h3>
+    <div class="bbox">
+        <h4 id="Connect_to_the_virtual_machine_from_Windows">Connect to the virtual machine</h4>
+        <ol>
+            <li>Connect to the virtual machine from the Windows PC via &lsquo;Remote Desktop
+                Connection&rsquo;
+            </li>
+            <li>Log into the computer</li>
+            <li>Open <q>Remote Desktop Connection</q></li>
+            <li>Click <q>Show Options</q></li>
+            <li>Enter the IP address of your virtual machine</li>
+            <li>Enter username <code>participant</code></li>
+            <li>Tick the box for <q>Allow me to save credentials</q>
+
+                <p><img alt="" src="images/P1.pdf"></p></li>
+            <li>Go to the <q>Advanced</q> tab</li>
+            <li> Click <q>Settings</q> under <q>Connect from anywhere</q><br>
+
+
+                <p><img alt="" src="images/P2.pdf"></p></li>
+            <li>Click <q>Do not use an RD Gateway server</q> and then click <q>OK</q>
+
+
+                <p><img alt="" src="images/P3.pdf"></p></li>
+            <li>Click <q>Connect</q>. If asked whether you trust the computer, tick the box for <q>Don&rsquo;t ask me
+                again
+                for connections to this computer</q> and click <q>Yes</q></li>
+            <li>When prompted to enter credentials, enter the password <code>clays</code>
+
+
+                <p><img alt="" src="images/P5.pdf"></p></li>
+
+            <li>You should be logged into the virtual machine
+
+
+                <p><img alt="" src="images/P6.png"></p>
+                <blockquote> IMPORTANT: When you reconnect again, the IP address and your username will be saved, but
+                    you need to tick
+                    the
+                    box
+                    for <q>Allow me to save credentials</q> every time. If you forget this, you might not be able to log
+                    in.
+                </blockquote>
+            </li>
+        </ol>
+
+    </div>
+    <div class="bbox">
+        <h4 id="Connect_to_the_virtual_machine_from_other_machines">Connect to the virtual machine from other
+            machines</h4>
+        <ul>
+            <li>Connect to the virtual machine through the pre-installed <q>Remote Desktop</q> application</li>
+            <!--        <p>&ndash;&gt; If using Windows - open <strong>Microsoft Remote Desktop</strong>.</p>-->
+            <li>
+                <ol>
+                    <li>If using Mac - download <strong>Microsoft Remote Desktop</strong> from the <strong>App
+                        Store</strong>.
+                    </li>
+                    <li>If using Linux/Chrome - you should have a preinstalled <strong>Remote
+                        Desktop</strong>/<strong>Virtual Machine</strong> app.
+                    </li>
+                </ol>
+            </li>
+
+            <li>Follow the instructions above.</li>
+        </ul>
+    </div>
+
+    <h3 class="enum" id="toc_2_2">Installing ClayCode</h3>
+
+    <h4>Requirements</h4>
+    <p>On this workshop's virtual machine (VM), all of the requirements are already installed. If you would like to
+        use
         ClayCode on your own computer, the following software and python packages need to be installed.</p>
     <ul>
         <li>Python 3.10</li>
@@ -282,7 +351,7 @@
         <li>GROMACS 2018 &dash; 2023</li>
         <li>MDAnalysis (for <span style="font-style: italic">d</span>-spacing equilibration runs)</li>
     </ul>
-    <h3 class="enum" id="toc_2_2">Installation</h3>
+    <h4>Installation</h4>
     <p>
 
     </p>
@@ -309,19 +378,22 @@
             <!--                &quot;ClayCode&quot; directory in your terminal.-->
             <!--                <pre>cd ClayCode</pre>-->
             <!--            </li>-->
-            <li>Inside the ClayCode folder, there is the <code>install.sh</code> installation file. Use it to install
+            <li>Inside the ClayCode folder, there is the <code>install.sh</code> installation file. Use it to
+                install
                 the <code>ClayCode</code> package:
                 <pre>bash install.sh</pre>
 
                 <blockquote>
                     Use <code>cd ...</code> to navigate directories in the terminal.
                 </blockquote>
-                <blockquote class="info">When doing this on your own computer, make sure all of the <a href="#toc_2_1">requirements</a>
+                <blockquote class="info">When doing this on your own computer, make sure all of the <a
+                        href="#toc_2_1">requirements</a>
                     are
                     installed.
                 </blockquote>
             </li>
-            <li><p>Once the installation was successful, you can use the package with the command <code>ClayCode</code>
+            <li><p>Once the installation was successful, you can use the package with the command
+                <code>ClayCode</code>
                 <blockquote>
                     For example, to build a model, the command would be:
                     <pre>ClayCode builder &lt;options&gt;</pre>
@@ -337,7 +409,8 @@
     </p>
     <ol>
         <li>Specifications on system size, solvation, number of stacked clay sheets, etc. (in YAML format).</li>
-        <li>Information about the model chemical composition (either as target stoichiometry (in CSV (comma-separated
+        <li>Information about the model chemical composition (either as target stoichiometry (in CSV
+            (comma-separated
             values) format or as individual UC indices and their ratios in the specifications YAML file)
         </li>
     </ol>
@@ -351,7 +424,8 @@
         </ul>
     </div>
     The following sections contain instructions for using ClayCode to build a clay model by specifying a target
-    stoichiometry and by giving UC indices and their ratios. In both cases, the user needs to provide a specifications
+    stoichiometry and by giving UC indices and their ratios. In both cases, the user needs to provide a
+    specifications
     file containing the build instructions.<br>
     <!--    &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
     <!--    <img alt="input_parameters.png" src="images/input_parameters.png">-->
@@ -367,7 +441,8 @@
             <li>
                 <p>Inside the <code>builder</code> folder, you can find a template for the specifications file
                     <code>specifications.yaml</code>.</p>
-                <p>Have a look at the different options in the <code>specifications.yaml</code> file, such as the number
+                <p>Have a look at the different options in the <code>specifications.yaml</code> file, such as the
+                    number
                     of
                     clay sheets in the stack or species and concentration of
                     bulk ions.</p>
@@ -432,9 +507,11 @@
                 <code>target_composition.csv</code>.</p>
                 <code>target_composition.csv</code> currently only contains the index columns.</p>
                 <p>Add a new entry for your selected source clay to the file.</p>
-                <p>As illustrated in <a href="#fig:formula">figure 4</a>, the column header identifies the clay type,
+                <p>As illustrated in <a href="#fig:formula">figure 4</a>, the column header identifies the clay
+                    type,
                     the
-                    entries below describe the average tetrahedral and octahedral UC occupancies, charges and interlayer
+                    entries below describe the average tetrahedral and octahedral UC occupancies, charges and
+                    interlayer
                     ion types and ratios.</p>
                 <figure id="fig:formula">
                     <img alt="formula.png" src="images/formula.png" style="max-width: 70%"/>
@@ -445,34 +522,42 @@
                 </figure>
             </li>
             <li><p>
-                <blockquote class="note" style="margin-left: 0.5rem"><span style="font-weight: bolder">Notes: </span>
+                <blockquote class="note" style="margin-left: 0.5rem"><span
+                        style="font-weight: bolder">Notes: </span>
                     <ol class="regular" style="margin-bottom: 1.5rex;">
                         <li>ClayCode will only include
                             atom tetrahedral and octahedral occupancies that exceed a minimum UC occupancy.
-                            Smaller occupancies will be ignored and the missing atoms will be replaced by other atoms
+                            Smaller occupancies will be ignored and the missing atoms will be replaced by other
+                            atoms
                             types of
                             the same charge.The default value for this is 0.05&nbsp;atoms&nbsp;UC<sup>-1</sup>.
-                            The threshold can be adjusted through the <code>ZERO_THRESHOLD</code> keyword in the <code>specifications.yaml</code>
+                            The threshold can be adjusted through the <code>ZERO_THRESHOLD</code> keyword in the
+                            <code>specifications.yaml</code>
                             file.
                         </li>
-                        <li>If target occupancies do not sum to the expected tetrahedral or octahedral values but lie
+                        <li>If target occupancies do not sum to the expected tetrahedral or octahedral values but
+                            lie
                             within
                             the <code>OCC_TOL</code> threshold (default 0.1&nbsp;atoms&nbsp;UC<sup>-1</sup>), the
                             occupancies will be
                             adjusted to match expected values.
                         </li>
-                        <li>If a target composition contains elements without ClayFF parameters and their occupancies
+                        <li>If a target composition contains elements without ClayFF parameters and their
+                            occupancies
                             exceed <code>ZERO_THRESHOLD</code>,
                             ClayCode will ask for confirmation to remove these atoms from the target composition. It
                             will furthermore ask for the charge of the removed atoms.
-                            Charges resulting from invalid atom types will be subtracted from the respective UC charges.
+                            Charges resulting from invalid atom types will be subtracted from the respective UC
+                            charges.
                         </li>
                         <li>The maximum accepted absolute deviation from the specified target composition can be
                             adjusted with the <code>MATCH_TOLERANCE</code> parameter. The default value is 0.025&nbsp;atoms&nbsp;UC<sup>-1</sup>.
                         </li>
-                        <li>The <code>SEL_PRIORITY</code> and <code>CHARGE_PRIORITY</code> specify how adjustments are
+                        <li>The <code>SEL_PRIORITY</code> and <code>CHARGE_PRIORITY</code> specify how adjustments
+                            are
                             made in case of incomplete
-                            occupancies or mismatches between occupancy and charge and tetrahedral (T) and octahedral
+                            occupancies or mismatches between occupancy and charge and tetrahedral (T) and
+                            octahedral
                             (O)
                             charges and total charge.<p>The default values are:</p>
                             <ul>
@@ -492,7 +577,8 @@
                 </p></li>
         </ul>
     </div>
-    Once the target composition file is prepared, the clay model can be built using the <code>ClayCode builder</code>
+    Once the target composition file is prepared, the clay model can be built using the <code>ClayCode
+    builder</code>
     <div class="bbox" id="task_4">
         <h3 id="Build_the_clay_model">Build the clay model</h3>
         <ul>
@@ -509,7 +595,8 @@
     </div>
     <h3 class="enum" id="toc_3_2">Preparing a clay model with UC indices and their ratios</h3>
     <p>
-        The second option is to provide UC indices and their ratios in the specifications file. Choose this method if
+        The second option is to provide UC indices and their ratios in the specifications file. Choose this method
+        if
         you
         want to use specific UCs and know their ratios within a sheet.</p>
     <div class="bbox">
@@ -520,18 +607,21 @@
                 <code>UC_INDEX_RATIOS</code> option.
             </li>
             <li>When choosing this option, instead of providing the path to the target composition file in the
-                <code>specifications.yaml</code> file, delete or comment out the <code>CLAY_COMP</code> line and instead
+                <code>specifications.yaml</code> file, delete or comment out the <code>CLAY_COMP</code> line and
+                instead
                 add
                 the UC indices and ratios with the <code>UC_INDEX_RATIOS</code> option.
                 <blockquote>
                     For example, a simplified montmorillonite can be constructed from the <span
                         style="font-style: italic">cis</span>-dioctahedral 2:1 C213 UC:
                     <pre>UC_INDEX_RATIOS: {C213: 1}</pre>
-                    The ratios of the UCs can sum to any number, as the UCs will be normalised to the total number of
+                    The ratios of the UCs can sum to any number, as the UCs will be normalised to the total number
+                    of
                     UCs in the
                     sheet.
                 </blockquote>
             </li>
+        </ul>
     </div>
     <p>To build the clay model, follow the same procedure as in <a href="#task_4">task 4</a>.</p>
     </p>
@@ -547,7 +637,8 @@
             <li>Load the final energy minimised structure into VMD:
                 <blockquote>
                     In the main window, click <code>File</code> &#8594;
-                    <code>New Molecule ...</code> and select final structure ending in &quot;em.gro&quot; (not &quot;pre_em.gro&quot;)
+                    <code>New Molecule ...</code> and select final structure ending in &quot;em.gro&quot; (not
+                    &quot;pre_em.gro&quot;)
                     inside the
                     <code>EM</code> output folder.
                 </blockquote>
@@ -565,10 +656,12 @@
                     For the clay, the <code>Polyhedra</code> or Licorice representations are good choices. <br>
                     You can also change the representation of a subset of atoms by selecting them in the <code>Graphical
                     Representations</code> window.
-                    For this, click on <code>Create Rep</code> inside the <code>Graphical Representations</code> window.
+                    For this, click on <code>Create Rep</code> inside the <code>Graphical Representations</code>
+                    window.
                     In the <code>Selected Atoms</code> field you can replace the <code>all</code> by a selection
                     command.
-                    E.g. to select all atoms of the residue with the number 10, you can use <code>resid 10</code>, for
+                    E.g. to select all atoms of the residue with the number 10, you can use <code>resid 10</code>,
+                    for
                     all atoms of the residue with the name <code>CD2013</code> use <code>resname CD2013</code>, etc.
                     You can find more information about selection commands in the <abbr>VMD</abbr> user guide: <a
                         href="https://www.ks.uiuc.edu/Research/vmd/current/ug/node89.html">www.ks.uiuc.edu/Research/vmd/current/ug/node89.html</a>.
@@ -586,7 +679,8 @@
         <h3 id="Insert decanoic acid molecules">Insert decanoic acid molecules</h3>
         <ul>
             <li>Insert 10 decanoic acid molecules into the bulk space of the clay model.</li>
-            <li>Inside the <code>insert-molecules</code> folder, you can find the topology and coordinate files for a
+            <li>Inside the <code>insert-molecules</code> folder, you can find the topology and coordinate files for
+                a
                 decanoic acid molecule.
             </li>
             <li>Usage of <code>insert&dash;molecules</code>: <br>
@@ -655,7 +749,8 @@
         <h3 id="Update_the_topology_file"></h3>
         <ol>
             <li>Add the decanoic acid molecules and their force field parameters to the topology file.</li>
-            <li>Open the topology file final topology file inside the EM folder and add the 10 inserted DECA molecules
+            <li>Open the topology file final topology file inside the EM folder and add the 10 inserted DECA
+                molecules
                 at the bottom of the <code>[ molecules ]</code> section.<br>
             <li>Include the force field parameters for the decanoic acid molecules in the topology file. In this
                 example, the CHARMM36 force field (located inside the <code>insert-molecules</code> folder) will be
@@ -671,33 +766,38 @@
     <div class="bbox">
         <h3 id="Neutralise_the_system"></h3>
         <ol>
-        <li>Use GROMACS to neutralise the system with Na<sup>+</sup> ions:</li>
-        <li>Generate a run <abbr>TPR</abbr> file for the system :
-            <p>
-                Because neutralising requires information about the system topology, adding ions with <code>genion</code> requires a compiled topology file. Use
-                <code>grompp</code> to
-                generate such a <code>TPR</code> file. The contents of the run parameter <code>MDP</code> input file is not important
-                for
-                this step, but it has to be provided.<br>Use the <code>genion.mdp</code> parameter file from the <code>insert-molecules/MDP</code> folder.</p>
-            <p>Usage of <code>grompp</code>:</p>
-            <blockquote>
-                <pre>gmx grompp &dash;f MDP/genion.mdp &dash;c &lt;clay_coordinate_file&gt;.gro &dash;p &lt;clay_topology_input_file&gt;.gro &dash;o &lt;compiled_topology_output_file&gt;.gro &dash;pp &lt;clay_topology_output_file&gt;.gro &dash;maxwarn 1</pre>
-                <code>&dash;f</code> specifies the input run parameter file.<br>
-                <code>&dash;c</code> specifies the coordinate file of the system to solvate.<br>
-                <code>&dash;p</code> specifies the topology file.<br>
-                <code>&dash;o</code> specifies the compiled output <code>.tpr</code> file.<br>
-                <code>&dash;pp</code> specifies the output topology file.<br>
-                <code>&dash;maxwarn</code> specifies the maximum number of warnings that can be ignored.
-                If the protein has a charge, <code>grompp</code> will generate a warning that needs to be
-                ignored.<br>
-                <p class="note"> The <code>&dash;pp</code> has to be used here
-                    to generate a new topology file with ions is used here rather than with the <code>genion</code>
-                    command.</p>
-            </blockquote>
-            <p>
-                <code>grompp</code> will generate a note similar to this one:
-            </p>
-            <pre>
+            <li>Use GROMACS to neutralise the system with Na<sup>+</sup> ions:</li>
+            <li>Generate a run <abbr>TPR</abbr> file for the system :
+                <p>
+                    Because neutralising requires information about the system topology, adding ions with
+                    <code>genion</code> requires a compiled topology file. Use
+                    <code>grompp</code> to
+                    generate such a <code>TPR</code> file. The contents of the run parameter <code>MDP</code> input
+                    file
+                    is not important
+                    for
+                    this step, but it has to be provided.<br>Use the <code>genion.mdp</code> parameter file from the
+                    <code>insert-molecules/MDP</code> folder.</p>
+                <p>Usage of <code>grompp</code>:</p>
+                <blockquote>
+                    <pre>gmx grompp &dash;f MDP/genion.mdp &dash;c &lt;clay_coordinate_file&gt;.gro &dash;p &lt;clay_topology_input_file&gt;.gro &dash;o &lt;compiled_topology_output_file&gt;.gro &dash;pp &lt;clay_topology_output_file&gt;.gro &dash;maxwarn 1</pre>
+                    <code>&dash;f</code> specifies the input run parameter file.<br>
+                    <code>&dash;c</code> specifies the coordinate file of the system to solvate.<br>
+                    <code>&dash;p</code> specifies the topology file.<br>
+                    <code>&dash;o</code> specifies the compiled output <code>.tpr</code> file.<br>
+                    <code>&dash;pp</code> specifies the output topology file.<br>
+                    <code>&dash;maxwarn</code> specifies the maximum number of warnings that can be ignored.
+                    If the protein has a charge, <code>grompp</code> will generate a warning that needs to be
+                    ignored.<br>
+                    <p class="note"> The <code>&dash;pp</code> has to be used here
+                        to generate a new topology file with ions is used here rather than with the
+                        <code>genion</code>
+                        command.</p>
+                </blockquote>
+                <p>
+                    <code>grompp</code> will generate a note similar to this one:
+                </p>
+                <pre>
 NOTE 3 [file MMT_dec_solv.top, line 40]:
 In moleculetype 'MMT' 32 atoms are not bound by a potential or constraint
 to any other atom in the same moleculetype. Although technically this
@@ -706,32 +806,32 @@ forgot to add a bond/potential/constraint or put multiple molecules in
 the same moleculetype definition by mistake. Run with <code>&dash;v</code> to get
 information for each atom.
 </pre>
-            <p>
-                This note is not an error, but a warning that the atoms in the clay sheet are not bonded to each
-                other. Because ClayFF is a non&dash;bonded force field, this is not an error, and you can ignore
-                this
-                message.
-            </p>
-        </li>
-        <li>Use GROMACS <code>genion</code> to neutralise the system with Na<sup>+</sup> ions:
-            <p>Usage of <code>genion</code>: </p>
-            <blockquote>
-                <pre>gmx genion &dash;s &lt;compiled_topology_file&gt;.gro &dash;o &lt;clay_coordinate_output_file&gt;.gro &dash;p &lt;clay_topology_input_file&gt;.gro &dash;pname Na &dash;nname Cl &dash;neutral</pre>
-                <code>&dash;s</code> specifies the input coordinate file of the system to solvate.<br>
-                <code>&dash;o</code> specifies the output coordinate file<br>
-                <code>&dash;p</code> specifies the input topology file<br>
-                <code>&dash;pname</code> specifies the name of the positive ion<br>
-                <code>&dash;nname</code> specifies the name of the negative ion<br>
-                <code>&dash;neutral</code> &ndash; neutralise the system<br>
                 <p>
-                    You will be asked which molecules should be replaced with ions. Select the code for the bulk
-                    water <code>SOL</code> molecules.
+                    This note is not an error, but a warning that the atoms in the clay sheet are not bonded to each
+                    other. Because ClayFF is a non&dash;bonded force field, this is not an error, and you can ignore
+                    this
+                    message.
                 </p>
-<!--                <p>GROMACS will try to fill the available space with solvent and update the number of water-->
-<!--                    (<code>SOL</code>)-->
-<!--                    molecules in the output topology file.</p>-->
-            </blockquote>
-        </li>
+            </li>
+            <li>Use GROMACS <code>genion</code> to neutralise the system with Na<sup>+</sup> ions:
+                <p>Usage of <code>genion</code>: </p>
+                <blockquote>
+                    <pre>gmx genion &dash;s &lt;compiled_topology_file&gt;.gro &dash;o &lt;clay_coordinate_output_file&gt;.gro &dash;p &lt;clay_topology_input_file&gt;.gro &dash;pname Na &dash;nname Cl &dash;neutral</pre>
+                    <code>&dash;s</code> specifies the input coordinate file of the system to solvate.<br>
+                    <code>&dash;o</code> specifies the output coordinate file<br>
+                    <code>&dash;p</code> specifies the input topology file<br>
+                    <code>&dash;pname</code> specifies the name of the positive ion<br>
+                    <code>&dash;nname</code> specifies the name of the negative ion<br>
+                    <code>&dash;neutral</code> &ndash; neutralise the system<br>
+                    <p>
+                        You will be asked which molecules should be replaced with ions. Select the code for the bulk
+                        water <code>SOL</code> molecules.
+                    </p>
+                    <!--                <p>GROMACS will try to fill the available space with solvent and update the number of water-->
+                    <!--                    (<code>SOL</code>)-->
+                    <!--                    molecules in the output topology file.</p>-->
+                </blockquote>
+            </li>
         </ol>
     </div>
 </div>
@@ -756,7 +856,8 @@ information for each atom.
         simulation
         run parameters.
     </p>
-    <p>Since time is short, use ClayCode siminp to generate the simulation input files and scripts for an energy minimisation.</p>
+    <p>Since time is short, use ClayCode siminp to generate the simulation input files and scripts for an energy
+        minimisation.</p>
     <div class="bbox">
         <h3 id="Prepare_a_simulation_input_file">Prepare a simulation input file</h3>
         <p>Inside the <code>builder</code> folder, you can find a template for the simulation input file
@@ -765,13 +866,13 @@ information for each atom.
 
 </div>
 
-<!--<script src="scripts/generate_header.js"></script>-->
+<script src="scripts/generate_header.js"></script>
 <script src="scripts/generate_overview.js"></script>
 <script src="scripts/scroll_up.js"></script>
 <script src="scripts/adjust_for_dyslexia.js"></script>
 <script>window.onload = function () {
     generateOverview();
-    // generateHeader();
+    generateHeader();
     scrollUp();
     adjustForDyslexia()
 }</script>
