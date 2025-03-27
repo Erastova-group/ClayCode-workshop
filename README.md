@@ -2,7 +2,7 @@
 
 <img src="html/images/ClayCode_colour.png" width="30%">
 
-Link to **[worksheet](./html/RiP_ws.html).**
+Link to **[worksheet](./html/RiP_ws.md).**
 
 ## Data for practicals:
 - ### builder:
