@@ -4,6 +4,33 @@ ClayCode Workshop
 Contents
 --------
 
+- [Introduction](#introduction)
+- [Getting Started](#getting-started)
+   * [Connecting to the virtual machine](#connecting-to-the-virtual-machine)
+   * [Connect to the virtual machine from Windows](#connect-to-the-virtual-machine-from-windows)
+   * [Connect to the virtual machine from other machines](#connect-to-the-virtual-machine-from-other-machines)
+   * [Installing ClayCode](#installing-claycode-1)
+- [Building accurate clay models](#building-accurate-clay-models)
+   * [Download the workshop repository](#download-the-workshop-repository)
+   * [Prepare the specifications file](#prepare-the-specifications-file)
+   * [Preparing a clay model to match a target composition](#preparing-a-clay-model-to-match-a-target-composition)
+   * [Prepare the target composition file](#prepare-the-target-composition-file)
+   * [Build the clay model](#build-the-clay-model)
+   * [Preparing a clay model with UC indices and their ratios](#preparing-a-clay-model-with-uc-indices-and-their-ratios)
+   * [Prepare the UC indices and ratios file](#prepare-the-uc-indices-and-ratios-file)
+   * [Visualising the clay model](#visualising-the-clay-model)
+   * [Visualise the clay model](#visualise-the-clay-model)
+- [Inserting molecules into the bulk space](#inserting-molecules-into-the-bulk-space)
+   * [Insert decanoic acid molecules](#insert-decanoic-acid-molecules)
+   * [Update the topology file](#update-the-topology-file)
+   * [Neutralise the system](#neutralise-the-system)
+- [Generating simulation input files](#generating-simulation-input-files)
+   * [Prepare a simulation input file](#prepare-a-simulation-input-file)
+   * [Generate the simulation input files](#generate-the-simulation-input-files)
+   * [Perform the energy minimisation](#perform-the-energy-minimisation)
+- [What's next?](#whats-next)
+- [Suggestions](#suggestions)
+
 Introduction
 ------------
 
